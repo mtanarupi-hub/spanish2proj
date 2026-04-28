@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Español 2 — Profesiones & Gramática</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1A1410;
+    --terracotta: #C4583A;
+    --gold: #D4A843;
+    --sage: #5A7A5E;
+    --dusty-blue: #4A6B8A;
+    --light-tan: #E8DFD0;
+    --muted: #8A7B6B;
+    --card-bg: #FDFAF5;
+    --border: #D4C9B8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  header {
+    background: var(--ink);
+    color: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--terracotta);
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--gold); font-style: italic; }
+
+  nav { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  nav a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 3px;
+    opacity: 0.75;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+
+  nav a:hover { opacity: 1; border-color: var(--gold); color: var(--gold); }
+
+  .hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 32px 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '¡';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 400px;
+    opacity: 0.04;
+    left: -60px;
+    top: -80px;
+    line-height: 1;
+  }
+
+  .hero::after {
+    content: '!';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 400px;
+    opacity: 0.04;
+    right: -60px;
+    bottom: -100px;
+    line-height: 1;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--terracotta);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 5px 16px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em { color: var(--gold); font-style: italic; }
+
+  .hero p {
+    font-size: 1.05rem;
+    opacity: 0.75;
+    max-width: 560px;
+    margin: 0 auto 8px;
+  }
+
+  .authors {
+    margin-top: 28px;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 32px 100px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 36px;
+    margin-top: 64px;
+  }
+
+  .section-header:first-child { margin-top: 0; }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .section-title-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .section-title-block .subtitle {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .divider { height: 1px; background: var(--border); margin-bottom: 36px; }
+
+  .professions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .prof-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .prof-card:hover {
+    border-color: var(--terracotta);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .prof-card.active { border-color: var(--terracotta); background: #FFF8F6; }
+
+  .prof-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+  .prof-es { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--terracotta); display: block; }
+  .prof-en { font-size: 0.8rem; color: var(--muted); display: block; margin-top: 2px; }
+
+  .prof-example {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    font-size: 0.83rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .prof-card.active .prof-example { display: block; }
+
+  .prof-example .trans {
+    font-style: normal;
+    color: var(--muted);
+    font-size: 0.78rem;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .grammar-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px 36px;
+    margin-bottom: 28px;
+  }
+
+  .grammar-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .grammar-card h3 .badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 2px;
+    background: var(--gold);
+    color: white;
+  }
+
+  .grammar-card .explanation {
+    font-size: 0.93rem;
+    color: #3A3028;
+    margin-bottom: 20px;
+    line-height: 1.75;
+    max-width: 680px;
+  }
+
+  .formula-box {
+    background: var(--ink);
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9rem;
+    padding: 14px 20px;
+    border-radius: 6px;
+    margin-bottom: 22px;
+    display: inline-block;
+  }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 24px; }
+
+  .conj-table th {
+    background: var(--light-tan);
+    text-align: left;
+    padding: 9px 14px;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .conj-table td { padding: 9px 14px; border-bottom: 1px solid var(--border); }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--light-tan); }
+  .conj-table .pronoun { color: var(--muted); font-size: 0.82rem; }
+  .conj-table .form { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--terracotta); font-size: 0.95rem; }
+
+  .examples-list { display: flex; flex-direction: column; gap: 14px; margin-top: 6px; }
+
+  .example-item {
+    background: #FEFCF9;
+    border-left: 3px solid var(--sage);
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .example-item.terracotta { border-left-color: var(--terracotta); }
+  .example-item.blue { border-left-color: var(--dusty-blue); }
+  .example-item.gold { border-left-color: var(--gold); }
+
+  .example-item .es { font-family: 'Playfair Display', serif; font-size: 1rem; line-height: 1.5; }
+  .example-item .en { font-size: 0.82rem; color: var(--muted); margin-top: 5px; font-style: italic; }
+  .example-item .speaker { font-size: 0.72rem; color: var(--muted); margin-top: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; opacity: 0.65; }
+
+  .highlight { background: rgba(196,88,58,0.12); color: var(--terracotta); font-weight: 700; border-radius: 3px; padding: 0 3px; }
+  .highlight.blue { background: rgba(74,107,138,0.12); color: var(--dusty-blue); }
+  .highlight.sage { background: rgba(90,122,94,0.12); color: var(--sage); }
+  .highlight.gold { background: rgba(212,168,67,0.15); color: #A07820; }
+
+  .scene-box {
+    background: var(--light-tan);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    font-size: 0.88rem;
+  }
+
+  .scene-box .scene-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .scene-box .scene-text { font-style: italic; line-height: 1.8; color: #3A3028; }
+
+  .tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 28px; }
+
+  .tab {
+    padding: 10px 22px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    color: var(--muted);
+    transition: all 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .tab:hover { color: var(--terracotta); }
+  .tab.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .quiz-box {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 10px;
+    padding: 32px;
+    margin-top: 24px;
+  }
+
+  .quiz-box h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 6px; color: var(--gold); }
+  .quiz-box .quiz-prompt { font-size: 0.88rem; opacity: 0.7; margin-bottom: 22px; }
+  .quiz-question { font-size: 1.05rem; margin-bottom: 18px; font-style: italic; opacity: 0.9; }
+
+  .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+
+  .quiz-option {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--cream);
+    padding: 11px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    text-align: left;
+  }
+
+  .quiz-option:hover { background: rgba(255,255,255,0.13); border-color: var(--gold); }
+  .quiz-option.correct { background: rgba(90,122,94,0.4); border-color: var(--sage); }
+  .quiz-option.wrong { background: rgba(196,88,58,0.3); border-color: var(--terracotta); }
+
+  .quiz-feedback {
+    font-size: 0.88rem;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    display: none;
+  }
+
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct { background: rgba(90,122,94,0.25); border: 1px solid var(--sage); }
+  .quiz-feedback.wrong { background: rgba(196,88,58,0.2); border: 1px solid var(--terracotta); }
+
+  .quiz-nav { display: flex; align-items: center; gap: 14px; margin-top: 6px; }
+
+  .btn {
+    background: var(--terracotta);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn:hover { background: #A8432A; }
+  .quiz-progress { font-size: 0.78rem; opacity: 0.5; font-family: 'DM Mono', monospace; }
+
+  .tip-box {
+    background: rgba(212,168,67,0.1);
+    border: 1px solid rgba(212,168,67,0.35);
+    border-radius: 7px;
+    padding: 14px 18px;
+    font-size: 0.84rem;
+    color: #5A4A20;
+    margin-top: 16px;
+  }
+
+  .tip-box strong { color: #8A6A10; }
+
+  footer {
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    padding: 40px 32px;
+  }
+
+  footer .team-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 14px; font-weight: 600; }
+  footer .team-names { font-family: 'Playfair Display', serif; font-size: 1.05rem; opacity: 0.8; }
+  footer .course { font-size: 0.78rem; opacity: 0.35; margin-top: 12px; font-family: 'DM Mono', monospace; }
+
+  @media (max-width: 640px) {
+    .professions-grid { grid-template-columns: repeat(2, 1fr); }
+    .quiz-options { grid-template-columns: 1fr; }
+    .grammar-card { padding: 22px 20px; }
+    main { padding: 40px 20px 80px; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Español <span>Dos</span></div>
+    <nav>
+      <a href="#profesiones">Profesiones</a>
+      <a href="#futuro">Futuro</a>
+      <a href="#futuro-perfecto">Futuro Perfecto</a>
+      <a href="#subjuntivo">Subjuntivo</a>
+      <a href="#practica">Práctica</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">Spanish 2 — Grammar & Vocabulary</div>
+  <h1>Habla del <em>futuro</em>,<br>de tus sueños y dudas.</h1>
+  <p>Master professions, the future tense, future perfect, and past subjunctive — all in context.</p>
+  <div class="authors">by Niral P. · Tanarupi M. · Malvika M.</div>
+</div>
+
+<main>
+
+  <!-- PROFESIONES -->
+  <div id="profesiones" class="section-header">
+    <div class="section-number">01</div>
+    <div class="section-title-block">
+      <h2>Las Profesiones</h2>
+      <div class="subtitle">Click any card to see it used in a sentence</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="professions-grid">
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">👨‍⚕️</span>
+      <span class="prof-es">el/la médico/a</span>
+      <span class="prof-en">doctor / physician</span>
+      <div class="prof-example">«Niral quiere ser <strong>médico</strong> para ayudar a los pacientes.»<span class="trans">Niral wants to be a doctor to help patients.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">⚖️</span>
+      <span class="prof-es">el/la abogado/a</span>
+      <span class="prof-en">lawyer</span>
+      <div class="prof-example">«Malvika estudia mucho porque quiere ser <strong>abogada</strong>.»<span class="trans">Malvika studies a lot because she wants to be a lawyer.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">💻</span>
+      <span class="prof-es">el/la ingeniero/a</span>
+      <span class="prof-en">engineer</span>
+      <div class="prof-example">«Tanarupi sueña con ser <strong>ingeniera</strong> de software.»<span class="trans">Tanarupi dreams of being a software engineer.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">🎨</span>
+      <span class="prof-es">el/la artista</span>
+      <span class="prof-en">artist</span>
+      <div class="prof-example">«De niña, Malvika dibujaba todo el día — ya era <strong>artista</strong>.»<span class="trans">As a child, Malvika drew all day — she was already an artist.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">🏫</span>
+      <span class="prof-es">el/la maestro/a</span>
+      <span class="prof-en">teacher</span>
+      <div class="prof-example">«La <strong>maestra</strong> les enseña español con paciencia.»<span class="trans">The teacher teaches them Spanish with patience.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">🏗️</span>
+      <span class="prof-es">el/la arquitecto/a</span>
+      <span class="prof-en">architect</span>
+      <div class="prof-example">«Niral diseñó un edificio — ¡será <strong>arquitecto</strong> algún día!»<span class="trans">Niral designed a building — he'll be an architect someday!</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">📰</span>
+      <span class="prof-es">el/la periodista</span>
+      <span class="prof-en">journalist</span>
+      <div class="prof-example">«La <strong>periodista</strong> escribió un artículo importante.»<span class="trans">The journalist wrote an important article.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">🔬</span>
+      <span class="prof-es">el/la científico/a</span>
+      <span class="prof-en">scientist</span>
+      <div class="prof-example">«Tanarupi es <strong>científica</strong>; investiga el cambio climático.»<span class="trans">Tanarupi is a scientist; she researches climate change.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">🍳</span>
+      <span class="prof-es">el/la cocinero/a</span>
+      <span class="prof-en">cook / chef</span>
+      <div class="prof-example">«El <strong>cocinero</strong> prepara tamales para la fiesta.»<span class="trans">The cook prepares tamales for the party.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">💼</span>
+      <span class="prof-es">el/la empresario/a</span>
+      <span class="prof-en">entrepreneur</span>
+      <div class="prof-example">«Malvika fundó su empresa; es una gran <strong>empresaria</strong>.»<span class="trans">Malvika founded her company; she is a great entrepreneur.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">🎭</span>
+      <span class="prof-es">el actor / la actriz</span>
+      <span class="prof-en">actor / actress</span>
+      <div class="prof-example">«Niral participó en la obra — tiene talento de <strong>actor</strong>.»<span class="trans">Niral participated in the school play — he has actor talent.</span></div>
+    </div>
+    <div class="prof-card" onclick="toggleProf(this)">
+      <span class="prof-icon">🏥</span>
+      <span class="prof-es">el/la enfermero/a</span>
+      <span class="prof-en">nurse</span>
+      <div class="prof-example">«El <strong>enfermero</strong> cuida a los pacientes con dedicación.»<span class="trans">The nurse cares for patients with dedication.</span></div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <strong>💡 Gramática rápida:</strong> Say <em>ser + profesión</em> WITHOUT an article when no adjective is present: <em>«Soy médico.»</em> — not <em>«Soy un médico.»</em> (But with adjective: <em>«Soy un médico excelente.»</em> ✓)
+  </div>
+
+  <!-- FUTURO SIMPLE -->
+  <div id="futuro" class="section-header">
+    <div class="section-number">02</div>
+    <div class="section-title-block">
+      <h2>El Futuro Simple</h2>
+      <div class="subtitle">What will happen</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="grammar-card">
+    <h3>Formation <span class="badge">Formation</span></h3>
+    <p class="explanation">Take the <strong>infinitive</strong> of any verb and add these endings. Irregular verbs use a different stem but the same endings.</p>
+    <div class="formula-box">infinitivo + é / ás / á / emos / éis / án</div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'fut-reg')">Regular: hablar</button>
+      <button class="tab" onclick="switchTab(this,'fut-irr')">Irregular stems</button>
+    </div>
+
+    <div id="fut-reg" class="tab-panel active">
+      <table class="conj-table">
+        <thead><tr><th>Pronoun</th><th>Form</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="pronoun">yo</td><td class="form">hablaré</td><td>I will speak</td></tr>
+          <tr><td class="pronoun">tú</td><td class="form">hablarás</td><td>you will speak</td></tr>
+          <tr><td class="pronoun">él/ella/Ud.</td><td class="form">hablará</td><td>he/she will speak</td></tr>
+          <tr><td class="pronoun">nosotros</td><td class="form">hablaremos</td><td>we will speak</td></tr>
+          <tr><td class="pronoun">vosotros</td><td class="form">hablaréis</td><td>you all will speak</td></tr>
+          <tr><td class="pronoun">ellos/Uds.</td><td class="form">hablarán</td><td>they will speak</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="fut-irr" class="tab-panel">
+      <table class="conj-table">
+        <thead><tr><th>Infinitive</th><th>Irregular Stem</th><th>yo form</th></tr></thead>
+        <tbody>
+          <tr><td>tener</td><td class="form">tendr-</td><td>tendré</td></tr>
+          <tr><td>poder</td><td class="form">podr-</td><td>podré</td></tr>
+          <tr><td>venir</td><td class="form">vendr-</td><td>vendré</td></tr>
+          <tr><td>hacer</td><td class="form">har-</td><td>haré</td></tr>
+          <tr><td>decir</td><td class="form">dir-</td><td>diré</td></tr>
+          <tr><td>saber</td><td class="form">sabr-</td><td>sabré</td></tr>
+          <tr><td>salir</td><td class="form">saldr-</td><td>saldré</td></tr>
+          <tr><td>ser/ir</td><td class="form">ser-</td><td>seré</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:28px;">In context</h3>
+    <div class="scene-box">
+      <span class="scene-label">📍 Scene: Last day of school — friends imagine their futures</span>
+      <div class="scene-text">Niral, Tanarupi, and Malvika sit on the steps outside, imagining what comes next.</div>
+    </div>
+
+    <div class="examples-list">
+      <div class="example-item terracotta">
+        <div class="es">— Yo <span class="highlight">seré</span> médico y <span class="highlight">trabajaré</span> en un hospital de la ciudad.</div>
+        <div class="en">I will be a doctor and I will work in a city hospital.</div>
+        <div class="speaker">— Niral</div>
+      </div>
+      <div class="example-item blue">
+        <div class="es">— Pues yo <span class="highlight blue">estudiaré</span> ingeniería. Después, <span class="highlight blue">diseñaré</span> puentes increíbles.</div>
+        <div class="en">Well, I will study engineering. Afterward, I will design incredible bridges.</div>
+        <div class="speaker">— Tanarupi</div>
+      </div>
+      <div class="example-item sage">
+        <div class="es">— Y yo <span class="highlight sage">abriré</span> mi propio negocio. <span class="highlight sage">Tendré</span> empleados y <span class="highlight sage">viajaré</span> por el mundo.</div>
+        <div class="en">And I will open my own business. I will have employees and I will travel the world.</div>
+        <div class="speaker">— Malvika</div>
+      </div>
+      <div class="example-item gold">
+        <div class="es">— Los tres <span class="highlight gold">tendremos</span> éxito. ¡<span class="highlight gold">Celebraremos</span> juntos en diez años!</div>
+        <div class="en">All three of us will be successful. We will celebrate together in ten years!</div>
+        <div class="speaker">— All three</div>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top:20px;">
+      <strong>💡 Also used for conjecture:</strong> <em>«¿Dónde estará Niral?»</em> = "I wonder where Niral is / Where could Niral be?"
+    </div>
+  </div>
+
+  <!-- FUTURO PERFECTO -->
+  <div id="futuro-perfecto" class="section-header">
+    <div class="section-number">03</div>
+    <div class="section-title-block">
+      <h2>El Futuro Perfecto</h2>
+      <div class="subtitle">What will have happened by a point in time</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="grammar-card">
+    <h3>Formation <span class="badge">Formation</span></h3>
+    <p class="explanation">Combine the <strong>future tense of <em>haber</em></strong> with a <strong>past participle</strong>. Describes an action completed before a future point in time.</p>
+    <div class="formula-box">haber (future) + participio pasado</div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'fp-haber')">Haber in future</button>
+      <button class="tab" onclick="switchTab(this,'fp-part')">Key past participles</button>
+    </div>
+
+    <div id="fp-haber" class="tab-panel active">
+      <table class="conj-table">
+        <thead><tr><th>Pronoun</th><th>Haber (future)</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="pronoun">yo</td><td class="form">habré</td><td>habré terminado — I will have finished</td></tr>
+          <tr><td class="pronoun">tú</td><td class="form">habrás</td><td>habrás llegado — you will have arrived</td></tr>
+          <tr><td class="pronoun">él/ella/Ud.</td><td class="form">habrá</td><td>habrá hablado — he/she will have spoken</td></tr>
+          <tr><td class="pronoun">nosotros</td><td class="form">habremos</td><td>habremos comido — we will have eaten</td></tr>
+          <tr><td class="pronoun">vosotros</td><td class="form">habréis</td><td>habréis vivido — you all will have lived</td></tr>
+          <tr><td class="pronoun">ellos/Uds.</td><td class="form">habrán</td><td>habrán salido — they will have left</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="fp-part" class="tab-panel">
+      <table class="conj-table">
+        <thead><tr><th>Infinitive</th><th>Participle</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>hablar</td><td class="form">hablado</td><td>regular -ar</td></tr>
+          <tr><td>comer</td><td class="form">comido</td><td>regular -er</td></tr>
+          <tr><td>vivir</td><td class="form">vivido</td><td>regular -ir</td></tr>
+          <tr><td>hacer</td><td class="form">hecho</td><td>irregular ⚠️</td></tr>
+          <tr><td>escribir</td><td class="form">escrito</td><td>irregular ⚠️</td></tr>
+          <tr><td>abrir</td><td class="form">abierto</td><td>irregular ⚠️</td></tr>
+          <tr><td>ver</td><td class="form">visto</td><td>irregular ⚠️</td></tr>
+          <tr><td>ser/ir</td><td class="form">sido / ido</td><td>irregular ⚠️</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:28px;">In context</h3>
+    <div class="scene-box">
+      <span class="scene-label">📍 Scene: Graduation night — imagining the 10-year reunion</span>
+      <div class="scene-text">«Para el año 2035...» — they each make predictions about what they'll have accomplished.</div>
+    </div>
+
+    <div class="examples-list">
+      <div class="example-item terracotta">
+        <div class="es">Para el año 2035, Niral ya <span class="highlight">habrá terminado</span> la residencia médica y <span class="highlight">habrá atendido</span> a miles de pacientes.</div>
+        <div class="en">By 2035, Niral will have already finished his medical residency and will have seen thousands of patients.</div>
+      </div>
+      <div class="example-item blue">
+        <div class="es">Para cuando nos reunamos, Tanarupi <span class="highlight blue">habrá construido</span> su primer puente y <span class="highlight blue">habrá publicado</span> tres artículos científicos.</div>
+        <div class="en">By the time we meet again, Tanarupi will have built her first bridge and will have published three scientific articles.</div>
+      </div>
+      <div class="example-item sage">
+        <div class="es">Malvika nos dice: «Para entonces, <span class="highlight sage">habré abierto</span> cinco tiendas y <span class="highlight sage">habré viajado</span> a veinte países.»</div>
+        <div class="en">Malvika tells us: "By then, I will have opened five stores and will have traveled to twenty countries."</div>
+      </div>
+      <div class="example-item gold">
+        <div class="es">— ¿<span class="highlight gold">Habremos cumplido</span> nuestros sueños? — pregunta Tanarupi. — ¡Por supuesto! — responden todos.</div>
+        <div class="en">"Will we have fulfilled our dreams?" asks Tanarupi. "Of course!" everyone responds.</div>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top:20px;">
+      <strong>💡 Key triggers:</strong> Look for <em>para + time expression</em> («para el lunes», «para cuando llegues») or <em>ya</em> (already) as signals to use the future perfect.
+    </div>
+  </div>
+
+  <!-- SUBJUNTIVO PASADO -->
+  <div id="subjuntivo" class="section-header">
+    <div class="section-number">04</div>
+    <div class="section-title-block">
+      <h2>El Pasado de Subjuntivo</h2>
+      <div class="subtitle">Doubt, desire, and emotion in the past</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="grammar-card">
+    <h3>Formation <span class="badge">Formation</span></h3>
+    <p class="explanation">Take the <strong>ellos/ellas preterite form</strong>, drop <strong>-ron</strong>, and add the past subjunctive endings. Works for all verbs including irregulars!</p>
+    <div class="formula-box">preterite ellos stem + ra / ras / ra / ramos / rais / ran</div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'ps-hablar')">hablar</button>
+      <button class="tab" onclick="switchTab(this,'ps-tener')">tener (irreg.)</button>
+      <button class="tab" onclick="switchTab(this,'ps-ser')">ser / ir (irreg.)</button>
+    </div>
+
+    <div id="ps-hablar" class="tab-panel active">
+      <table class="conj-table">
+        <thead><tr><th>Pronoun</th><th>Past Subj. Form</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="pronoun">yo</td><td class="form">hablara</td><td>(that) I spoke</td></tr>
+          <tr><td class="pronoun">tú</td><td class="form">hablaras</td><td>(that) you spoke</td></tr>
+          <tr><td class="pronoun">él/ella</td><td class="form">hablara</td><td>(that) he/she spoke</td></tr>
+          <tr><td class="pronoun">nosotros</td><td class="form">habláramos</td><td>(that) we spoke</td></tr>
+          <tr><td class="pronoun">vosotros</td><td class="form">hablarais</td><td>(that) you all spoke</td></tr>
+          <tr><td class="pronoun">ellos/Uds.</td><td class="form">hablaran</td><td>(that) they spoke</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="ps-tener" class="tab-panel">
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:14px;">Preterite ellos: <strong>tuvieron</strong> → stem: <strong>tuvie-</strong></p>
+      <table class="conj-table">
+        <thead><tr><th>Pronoun</th><th>Past Subj. Form</th></tr></thead>
+        <tbody>
+          <tr><td class="pronoun">yo</td><td class="form">tuviera</td></tr>
+          <tr><td class="pronoun">tú</td><td class="form">tuvieras</td></tr>
+          <tr><td class="pronoun">él/ella</td><td class="form">tuviera</td></tr>
+          <tr><td class="pronoun">nosotros</td><td class="form">tuviéramos</td></tr>
+          <tr><td class="pronoun">vosotros</td><td class="form">tuvierais</td></tr>
+          <tr><td class="pronoun">ellos/Uds.</td><td class="form">tuvieran</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="ps-ser" class="tab-panel">
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:14px;">Preterite ellos of ser/ir: <strong>fueron</strong> → stem: <strong>fue-</strong></p>
+      <table class="conj-table">
+        <thead><tr><th>Pronoun</th><th>Past Subj. Form</th></tr></thead>
+        <tbody>
+          <tr><td class="pronoun">yo</td><td class="form">fuera</td></tr>
+          <tr><td class="pronoun">tú</td><td class="form">fueras</td></tr>
+          <tr><td class="pronoun">él/ella</td><td class="form">fuera</td></tr>
+          <tr><td class="pronoun">nosotros</td><td class="form">fuéramos</td></tr>
+          <tr><td class="pronoun">vosotros</td><td class="form">fuerais</td></tr>
+          <tr><td class="pronoun">ellos/Uds.</td><td class="form">fueran</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:28px;">WEIRDO Triggers</h3>
+    <p class="explanation">The past subjunctive appears after <em>que</em> when the main verb is past (preterite/imperfect/conditional) and expresses:</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px;">
+      <div style="background:var(--light-tan);padding:12px 14px;border-radius:7px;font-size:0.82rem;"><strong style="color:var(--terracotta);">W</strong>ishes<br><span style="color:var(--muted);">querer, desear, ojalá</span></div>
+      <div style="background:var(--light-tan);padding:12px 14px;border-radius:7px;font-size:0.82rem;"><strong style="color:var(--terracotta);">E</strong>motion<br><span style="color:var(--muted);">alegrarse, sentir, temer</span></div>
+      <div style="background:var(--light-tan);padding:12px 14px;border-radius:7px;font-size:0.82rem;"><strong style="color:var(--terracotta);">I</strong>mpersonal<br><span style="color:var(--muted);">era importante que...</span></div>
+      <div style="background:var(--light-tan);padding:12px 14px;border-radius:7px;font-size:0.82rem;"><strong style="color:var(--terracotta);">R</strong>ecommend<br><span style="color:var(--muted);">recomendar, aconsejar</span></div>
+      <div style="background:var(--light-tan);padding:12px 14px;border-radius:7px;font-size:0.82rem;"><strong style="color:var(--terracotta);">D</strong>oubt/Denial<br><span style="color:var(--muted);">dudar, no creer</span></div>
+      <div style="background:var(--light-tan);padding:12px 14px;border-radius:7px;font-size:0.82rem;"><strong style="color:var(--terracotta);">O</strong>jalá<br><span style="color:var(--muted);">I wish / If only</span></div>
+    </div>
+
+    <h3>In context</h3>
+    <div class="scene-box">
+      <span class="scene-label">📍 Scene: As adults, looking back on their school years</span>
+    </div>
+
+    <div class="examples-list">
+      <div class="example-item terracotta">
+        <div class="es">El profesor quería que Niral <span class="highlight">estudiara</span> medicina porque era muy inteligente.</div>
+        <div class="en">The teacher wanted Niral to study medicine because he was very intelligent.</div>
+        <div class="speaker">🔑 Wish — quería que + past subjunctive</div>
+      </div>
+      <div class="example-item blue">
+        <div class="es">Era importante que Tanarupi <span class="highlight blue">tomara</span> clases de matemáticas avanzadas.</div>
+        <div class="en">It was important for Tanarupi to take advanced math classes.</div>
+        <div class="speaker">🔑 Impersonal expression — era importante que + past subjunctive</div>
+      </div>
+      <div class="example-item sage">
+        <div class="es">Malvika se alegró de que sus padres la <span class="highlight sage">apoyaran</span> cuando abrió su negocio.</div>
+        <div class="en">Malvika was glad that her parents supported her when she opened her business.</div>
+        <div class="speaker">🔑 Emotion — se alegró de que + past subjunctive</div>
+      </div>
+      <div class="example-item gold">
+        <div class="es">Ojalá que todos nosotros <span class="highlight gold">pudiéramos</span> viajar juntos a España aquel verano.</div>
+        <div class="en">If only we could all travel together to Spain that summer.</div>
+        <div class="speaker">🔑 Ojalá + past subjunctive (past wish/regret)</div>
+      </div>
+      <div class="example-item terracotta">
+        <div class="es">Los padres de Niral dudaban de que él <span class="highlight">fuera</span> médico tan joven, pero lo logró.</div>
+        <div class="en">Niral's parents doubted that he would be a doctor so young, but he made it.</div>
+        <div class="speaker">🔑 Doubt — dudaban de que + past subjunctive</div>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top:20px;">
+      <strong>💡 Sequence of tenses:</strong> Main verb past → subordinate must use past subjunctive. <em>«Quería que <strong>estudiara</strong>»</em> ✓ — not <em>«Quería que <strong>estudie</strong>»</em> ✗
+    </div>
+  </div>
+
+  <!-- PRÁCTICA -->
+  <div id="practica" class="section-header">
+    <div class="section-number">05</div>
+    <div class="section-title-block">
+      <h2>¡Práctica!</h2>
+      <div class="subtitle">Test what you've learned</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="quiz-box">
+    <h3>Mini Quiz</h3>
+    <div class="quiz-prompt">Choose the best answer for each sentence. ¡Buena suerte!</div>
+    <div id="quiz-container"></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="team-label">Created by</div>
+  <div class="team-names">Niral P. &nbsp;·&nbsp; Tanarupi M. &nbsp;·&nbsp; Malvika M.</div>
+  <div class="course">Español 2 · Grammar & Vocabulary Reference</div>
+</footer>
+
+<script>
+  function toggleProf(card) {
+    const wasActive = card.classList.contains('active');
+    document.querySelectorAll('.prof-card').forEach(c => c.classList.remove('active'));
+    if (!wasActive) card.classList.add('active');
+  }
+
+  function switchTab(btn, panelId) {
+    const container = btn.closest('.grammar-card');
+    container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    container.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(panelId).classList.add('active');
+  }
+
+  const questions = [
+    {
+      q: "Niral dijo: «En diez años, yo ______ médico.»",
+      options: ["seré", "soy", "era", "fuera"],
+      answer: 0,
+      explain: "¡Correcto! «Seré» is the future tense of «ser» (yo). We use the simple future for predictions about what will happen."
+    },
+    {
+      q: "Para el año 2035, Tanarupi ______ su doctorado.",
+      options: ["terminó", "habrá terminado", "terminaría", "terminara"],
+      answer: 1,
+      explain: "¡Exacto! «Habrá terminado» is the future perfect — an action completed before a future point in time (2035)."
+    },
+    {
+      q: "El profesor recomendó que Malvika ______ más.",
+      options: ["estudia", "estudiará", "estudiara", "estudie"],
+      answer: 2,
+      explain: "¡Muy bien! «Recomendó» is past, so we need the past subjunctive: «estudiara». Remember the sequence of tenses!"
+    },
+    {
+      q: "¿Cuál es el participio pasado de «abrir»?",
+      options: ["abrido", "abierto", "abrado", "aberto"],
+      answer: 1,
+      explain: "¡Correcto! «Abierto» is the irregular past participle of «abrir»."
+    },
+    {
+      q: "Ojalá que nosotros ______ ir a España juntos aquel verano.",
+      options: ["podamos", "pudimos", "pudiéramos", "podríamos"],
+      answer: 2,
+      explain: "¡Perfecto! «Ojalá que» + past subjunctive «pudiéramos» expresses a past wish or regret."
+    },
+    {
+      q: "«Soy _____ médico muy bueno.» — ¿Se necesita artículo?",
+      options: ["un (needed — adjective present)", "no article needed", "el", "uno"],
+      answer: 0,
+      explain: "¡Excelente! When a profession is followed by an adjective, the indefinite article IS required: «Soy un médico muy bueno.»"
+    }
+  ];
+
+  let current = 0, score = 0, answered = false;
+
+  function renderQuiz() {
+    const q = questions[current];
+    document.getElementById('quiz-container').innerHTML = `
+      <div class="quiz-question">${current + 1}. ${q.q}</div>
+      <div class="quiz-options">
+        ${q.options.map((opt, i) => `<button class="quiz-option" onclick="selectAnswer(this,${i})">${opt}</button>`).join('')}
+      </div>
+      <div class="quiz-feedback" id="qfeedback"></div>
+      <div class="quiz-nav">
+        <button class="btn" onclick="nextQuestion()">Siguiente →</button>
+        <span class="quiz-progress">${current + 1} / ${questions.length} &nbsp;|&nbsp; ✓ ${score} correct</span>
+      </div>
+    `;
+    answered = false;
+  }
+
+  function selectAnswer(btn, idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    const feedback = document.getElementById('qfeedback');
+    document.querySelectorAll('.quiz-option')[q.answer].classList.add('correct');
+    if (idx !== q.answer) {
+      btn.classList.add('wrong');
+      feedback.textContent = '✗ ' + q.explain;
+      feedback.className = 'quiz-feedback show wrong';
+    } else {
+      score++;
+      feedback.textContent = '✓ ' + q.explain;
+      feedback.className = 'quiz-feedback show correct';
+    }
+  }
+
+  function nextQuestion() {
+    if (!answered) return;
+    current++;
+    if (current < questions.length) {
+      renderQuiz();
+    } else {
+      const pct = Math.round((score / questions.length) * 100);
+      document.getElementById('quiz-container').innerHTML = `
+        <div style="text-align:center;padding:20px 0;">
+          <div style="font-family:'Playfair Display',serif;font-size:3rem;color:var(--gold);font-weight:900;">${score}/${questions.length}</div>
+          <div style="font-size:1.1rem;margin-top:8px;opacity:0.8;">${pct >= 80 ? '¡Excelente trabajo! 🎉' : pct >= 60 ? '¡Bien hecho! Sigue practicando.' : 'Repasa las secciones y vuelve a intentarlo.'}</div>
+          <button class="btn" style="margin-top:24px;" onclick="restartQuiz()">Reintentar</button>
+        </div>
+      `;
+    }
+  }
+
+  function restartQuiz() { current = 0; score = 0; renderQuiz(); }
+
+  renderQuiz();
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
